@@ -1,10 +1,12 @@
 <p>
   ### #! /usr/bin/env bash
-  echo hello "${USER} from bash"
+  echo hello, "${USER}, from bash"
   ###
 </p>
 <p>
   ### #! /usr/bin/env python3
-  print("hello from python")
+  import os
+  user = os.environ["USER"]
+  print(f"hello, {user}, from python")
   ###
 </p>
