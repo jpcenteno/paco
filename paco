@@ -1,24 +1,22 @@
 #! /bin/sh
 set -eu
 
-_is_separator() {
-    echo "${1}" | grep -E '^###' >/dev/null
-}
+beginswith() { case $2 in "$1"*) true;; *) false;; esac; }
 
+context=text
 code=""
 program=""
 
-context=text
 while read -r line; do
     if [ "${context}" = "text" ]; then
-        if _is_separator "${line}"; then
+        if beginswith "<?paco" "${line}"; then
             context=code
             program="$( echo "${line}" | cut -d ' ' -f 3- )"
         else
             echo "${line}"
         fi
     else
-        if _is_separator "${line}"; then
+        if beginswith "?>" ${line}; then
             context=text
             echo "${code}" | ${program}
             code=""

@@ -11,16 +11,16 @@ The source code is ~30 lines, including whitespace.
 
 ```html
 <p>
-  ### #! /usr/bin/env bash
+  <?paco #! /usr/bin/env bash
   echo hello, "${USER}, from bash"
-  ###
+  ?>
 </p>
 <p>
-  ### #! /usr/bin/env python3
+  <?paco #! /usr/bin/env python3
   import os
   user = os.environ["USER"]
   print(f"hello, {user}, from python")
-  ###
+  ?>
 </p>
 ```
 
@@ -35,14 +35,14 @@ hello, janedoe, from python
 ```
 ## Usage
 
-To start a code block, use `###` followed by the shebang you would use in a normal script. To wrap it up, just write `###`.
+To start a code block, use `<?paco` followed by the shebang you would use in a normal script. To wrap it up, just write `?>
 
 ```
 This is not a code block.
 
-### #! /bin/sh
+<?paco #! /bin/sh
 echo "This is a code block"
-###
+?>
 
 This is not a code block anymore.
 ```
